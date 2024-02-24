@@ -11,22 +11,31 @@
 }
 header.header {
     display: flex;
-    gap: 30px;
+    gap: 40px;
     justify-content: space-between;
     width: 100%;
     max-width: 1440px;
     align-items: center;
 }
+.logo img{
+    width: 100%;
+}
 nav.nav {
     display: flex;
-    align-items: self-start;
     gap: 30px;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-between;
 }
 nav.nav a {
     font-size: 17px;
-    text-transform: capitalize;
+    text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 5px;
+    color: #000;
+}
+nav.nav a:hover {
+    color: #547489;
 }
 ul.navlist {
     display: flex;
@@ -36,11 +45,14 @@ ul.navlist {
 .others-nav {
     position: relative;
 }
-.others-nav .others{
+.others-nav .others {
     font-size: 17px;
     letter-spacing: 0.5px;
     text-transform: capitalize;
     cursor: pointer;
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }
 ul.nav-drop-down {
     background: #fff;
@@ -60,7 +72,28 @@ ul.nav-drop-down {
     visibility: hidden;
 }
 ul.active-dropdown{
-    top: 41px;
+    top: 67px;
     visibility: visible;
     height: fit-content;
+}
+.others-nav .nav-down{
+    display: none !important;
+}
+.others-nav .nav-down-active{
+    display: block !important;
+}
+.others-nav .nav-up-active{
+    display: none !important;
+}
+.active{
+    color: #547489 !important;
+  }
+  .logo {
+    width: 100%;
+    display: flex;
+    max-width: 200px;
+    display: flex;
+}
+.search {
+    display: flex;
 }
