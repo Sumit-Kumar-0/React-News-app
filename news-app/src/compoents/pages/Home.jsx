@@ -20,7 +20,6 @@ export default class Home extends Component {
       }
       const result = await response.json();
       console.log(result);
-      console.log(result.totalResults);
     } catch (error) {
       console.log("error while fetching articles", error);
     }

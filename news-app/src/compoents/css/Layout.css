@@ -6,7 +6,7 @@
     align-items: center;
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    position: relative;
+    position: fixed;
     z-index: 999;
 }
 header.header {
@@ -16,6 +16,7 @@ header.header {
     width: 100%;
     max-width: 1440px;
     align-items: center;
+    background: #fff;
 }
 .logo img{
     width: 100%;
@@ -48,7 +49,7 @@ ul.navlist {
 .others-nav .others {
     font-size: 17px;
     letter-spacing: 0.5px;
-    text-transform: capitalize;
+    text-transform: uppercase;
     cursor: pointer;
     display: flex;
     gap: 5px;
@@ -70,20 +71,14 @@ ul.nav-drop-down {
     overflow: hidden;
     top: -19px;
     visibility: hidden;
+    transition: all 0.2s ease-in-out;
+    z-index: -1;
 }
 ul.active-dropdown{
-    top: 67px;
+    top: 66px;
     visibility: visible;
     height: fit-content;
-}
-.others-nav .nav-down{
-    display: none !important;
-}
-.others-nav .nav-down-active{
-    display: block !important;
-}
-.others-nav .nav-up-active{
-    display: none !important;
+    z-index: 0;
 }
 .active{
     color: #547489 !important;
@@ -96,4 +91,8 @@ ul.active-dropdown{
 }
 .search {
     display: flex;
+}
+.main-container {
+    padding-top: 108.47px;
+    background: #fff;
 }
