@@ -4,3 +4,13 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
+ul, li{
+  list-style: none;
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
+}
+.active{
+  color: red;
+}
