@@ -11,16 +11,8 @@ class Header extends Component {
     this.state = {
       isDropDownActive: false,
     };
-  }
 
-  toggleDropDown = () => {
-    this.setState((prevState) => ({
-      isDropDownActive: !prevState.isDropDownActive,
-    }));
-  };
-
-  render() {
-    const navItems = [
+    this.navItems = [
       {
         to: "/All",
         navLinkName: "All",
@@ -39,7 +31,7 @@ class Header extends Component {
       },
     ];
 
-    const dropDownItems = [
+    this.dropDownItems = [
       {
         to: "/Education",
         navLinkName: "Education",
@@ -73,7 +65,14 @@ class Header extends Component {
         navLinkName: "Jokes",
       },
     ];
+  }
 
+  toggleDropDown = () => {
+    this.setState((prevState) => ({
+      isDropDownActive: !prevState.isDropDownActive,
+    }));
+  };
+  render() {
     return (
       <div className="header-container">
         <header className="header">
@@ -84,7 +83,7 @@ class Header extends Component {
           </div>
           <nav className="nav">
             <ul className="navlist">
-              {navItems.map((navItem, i) => {
+              {this.navItems.map((navItem, i) => {
                 return (
                   <NavItem
                     key={i}
@@ -107,7 +106,7 @@ class Header extends Component {
                     this.state.isDropDownActive ? "active-dropdown" : ""
                   }`}
                 >
-                  {dropDownItems.map((navItem, i) => {
+                  {this.dropDownItems.map((navItem, i) => {
                     return (
                       <NavItem
                         key={i}
