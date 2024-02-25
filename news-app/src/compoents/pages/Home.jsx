@@ -14,7 +14,7 @@ export default class Home extends Component {
   getData = async () => {
     try {
       const response = await fetch(
-        `https://newsapi.org/v2/everything?q=${this.props.q}&language=hi&sortBy=publishedAt&apiKey=5cf39ca281de48599645ed32393550d4`
+        `https://newsapi.org/v2/everything?q=${this.props.q}&language=en&sortBy=publishedAt&apiKey=5cf39ca281de48599645ed32393550d4`
       );
       if (!response.ok) {
         console.log("error while fetching articles!!!");
@@ -39,34 +39,38 @@ export default class Home extends Component {
     }
   }
   render() {
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>> render");
     return (
       <Layout>
         <div className="home-container">
           <h1 className="heading">{this.props.q} related news</h1>
-          <div className="content">
+          <div className="content-articles">
             {this.state.articles.map((article, index) => {
               return (
-                <div key={index} className="card">
+                <Link className="single-article" to={article.url} target="_blank" key={index}>
+                <div className="card">
                   <div className="card__img">
-                    
-                    {console.log(">>>>>>>",article.urlToImage) && article.urlToImage && <img src={article.urlToImage} alt="" />}
+                    {article.urlToImage ? (
+                      <img src={article.urlToImage} alt="" />
+                    ) : (
+                      <p className="not-found-img">Image not found</p>
+                    )}
                   </div>
-                  <h3 className="card__heading">{article.title}</h3>
-                  <div className="source">
-                    <p className="source__name">{article.source.name}</p>
-                    <p className="source__date">{article.publishedAt}</p>
-                  </div>
-                  <p className="card__detail">{article.description}</p>
-                  <div className="source__link">
-                    <Link to={article.url} target="_blank">
-                      <Button
-                        text="read full article"
-                        className="primary-btn"
-                      />
-                    </Link>
+                  <div className="card__content">
+                    <h3 className="card__heading">{article.title}</h3>
+                    <div className="source">
+                      <p className="source__name">{article.source.name}</p>
+                      <p className="source__date">{new Date(article.publishedAt).toDateString()}</p>
+                    </div>
+                    <p className="card__detail">{article.description}</p>
+                    <div className="source__link">
+                        <Button
+                          text="read full article"
+                          className="primary-btn"
+                        />
+                    </div>
                   </div>
                 </div>
+                </Link>
               );
             })}
           </div>

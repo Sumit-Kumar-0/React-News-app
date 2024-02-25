@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import Main from "./Main";
 import "../css/Layout.css"
 
-export default class YourComponent extends Component {
+export default class Layout extends Component {
   render() {
     const { children } = this.props;
     return (

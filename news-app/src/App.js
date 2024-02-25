@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./compoents/pages/Home";
+import NotFound from "./compoents/pages/NotFound";
 
 class App extends Component {
   render() {
@@ -21,7 +22,7 @@ class App extends Component {
           <Route path="/World" element={<Home q="World" />} />
           <Route path="/Covid-19" element={<Home q="Covid-19" />} />
           <Route path="/Jokes" element={<Home q="Jokes" />} />
-          <Route path="/*" element={<Home q="Jokes" />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>
     );
