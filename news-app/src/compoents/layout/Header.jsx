@@ -9,13 +9,13 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isDropDownActive: false
+      isDropDownActive: false,
     };
   }
 
   toggleDropDown = () => {
-    this.setState(prevState => ({
-      isDropDownActive: !prevState.isDropDownActive
+    this.setState((prevState) => ({
+      isDropDownActive: !prevState.isDropDownActive,
     }));
   };
 
@@ -84,26 +84,38 @@ class Header extends Component {
           </div>
           <nav className="nav">
             <ul className="navlist">
-              {navItems.map((navItem, i) => (
-                <NavItem
-                  key={i}
-                  to={navItem.to}
-                  navLinkName={navItem.navLinkName}
-                />
-              ))}
+              {navItems.map((navItem, i) => {
+                return (
+                  <NavItem
+                    key={i}
+                    to={navItem.to}
+                    navLinkName={navItem.navLinkName}
+                  />
+                );
+              })}
               <div onClick={this.toggleDropDown} className="others-nav">
                 <p className="others">
                   Others
-                  {this.state.isDropDownActive ? <ChevronUp className="nav-up" /> : <ChevronDown className="nav-down" />}
+                  {this.state.isDropDownActive ? (
+                    <ChevronUp className="nav-up" />
+                  ) : (
+                    <ChevronDown className="nav-down" />
+                  )}
                 </p>
-                <ul className={`nav-drop-down ${this.state.isDropDownActive ? 'active-dropdown' : ''}`}>
-                  {dropDownItems.map((navItem, i) => (
-                    <NavItem
-                      key={i}
-                      to={navItem.to}
-                      navLinkName={navItem.navLinkName}
-                    />
-                  ))}
+                <ul
+                  className={`nav-drop-down ${
+                    this.state.isDropDownActive ? "active-dropdown" : ""
+                  }`}
+                >
+                  {dropDownItems.map((navItem, i) => {
+                    return (
+                      <NavItem
+                        key={i}
+                        to={navItem.to}
+                        navLinkName={navItem.navLinkName}
+                      />
+                    );
+                  })}
                 </ul>
               </div>
             </ul>
