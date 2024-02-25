@@ -14,7 +14,7 @@ export default class Home extends Component {
   getData = async () => {
     try {
       const response = await fetch(
-        `https://newsapi.org/v2/everything?q=${this.props.q}&language=en&sortBy=publishedAt&apiKey=5cf39ca281de48599645ed32393550d4`
+        `https://newsapi.org/v2/everything?q=${this.props.q}&language=${this.props.language}&sortBy=publishedAt&apiKey=59d85fee0ee644558eed48afd0b7d4ca`
       );
       if (!response.ok) {
         console.log("error while fetching articles!!!");
@@ -22,10 +22,9 @@ export default class Home extends Component {
       }
       const result = await response.json();
       this.setState({
-        articles: result.articles,
+        articles: result.articles.filter((withTitle) => withTitle.title !== "[Removed]"),
         totalResults: result.totalResults,
       });
-      console.log(result);
     } catch (error) {
       console.log("error while fetching articles", error);
     }
@@ -39,8 +38,9 @@ export default class Home extends Component {
     }
   }
   render() {
+
     return (
-      <Layout>
+      <Layout changeLanguage={this.props.changeLanguage}>
         <div className="home-container">
           <h1 className="heading">{this.props.q} related news</h1>
           <div className="content-articles">
@@ -52,7 +52,7 @@ export default class Home extends Component {
                     {article.urlToImage ? (
                       <img src={article.urlToImage} alt="" />
                     ) : (
-                      <p className="not-found-img">Image not found</p>
+                      <div className="not-found-img"><img src="/assets/img/no-img.jpg" alt="" /></div>
                     )}
                   </div>
                   <div className="card__content">

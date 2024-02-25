@@ -46,7 +46,6 @@ class Header extends Component {
 
   render() {
     const { isOtherDropDownActive, isLanguageDropDownActive } = this.state;
-
     return (
       <div className="header-container">
         <header className="header">
@@ -89,12 +88,12 @@ class Header extends Component {
                   {isLanguageDropDownActive ? <ChevronUp /> : <ChevronDown />}
                 </p>
                 <ul
-                  className={`nav-drop-down ${
+                  className={`nav-drop-down lang ${
                     isLanguageDropDownActive ? "active-dropdown" : ""
                   }`}
                 >
-                  <li>Hindi</li>
-                  <li>English</li>
+                  <li onClick={() => this.props.changeLanguage("hi")}>Hindi</li>
+                  <li onClick={() => this.props.changeLanguage("en")}>English</li>
                 </ul>
               </div>
             </ul>

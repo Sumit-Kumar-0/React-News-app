@@ -34,6 +34,8 @@ nav.nav a {
     letter-spacing: 0.5px;
     padding: 5px;
     color: #000;
+    display: flex;
+    justify-content: center;
 }
 nav.nav a:hover {
     color: #547489;
@@ -95,4 +97,15 @@ ul.active-dropdown{
 .main-container {
     padding-top: 108.47px;
     background: #fff;
+}
+ul.lang li {
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #000;
+    padding: 5px;
+    cursor: pointer;
+}
+ul.lang li:hover {
+    color: #547489;
 }

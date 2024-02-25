@@ -6,10 +6,11 @@ import "../css/Layout.css"
 
 export default class Layout extends Component {
   render() {
-    const { children } = this.props;
+    const { children  } = this.props;
+    
     return (
       <>
-        <Header />
+        <Header changeLanguage={this.props.changeLanguage}/>
         <Main>{children}</Main>
         <Footer />
       </>
