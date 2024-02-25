@@ -14,7 +14,7 @@ export default class Home extends Component {
   getData = async () => {
     try {
       const response = await fetch(
-        `https://newsapi.org/v2/everything?q=${this.props.q}&language=${this.props.language}&sortBy=publishedAt&apiKey=59d85fee0ee644558eed48afd0b7d4ca`
+        `https://newsapi.org/v2/everything?q=${this.props.q}&language=${this.props.language}&sortBy=publishedAt&apiKey=02669b364bf94da48b8cae5410fcd620`
       );
       if (!response.ok) {
         console.log("error while fetching articles!!!");
@@ -22,7 +22,7 @@ export default class Home extends Component {
       }
       const result = await response.json();
       this.setState({
-        articles: result.articles.filter((withTitle) => withTitle.title !== "[Removed]"),
+        articles: result.articles.filter((fitered) => fitered.title !== "[Removed]" && fitered.source.name.length < 20 && fitered.description.length > 150),
         totalResults: result.totalResults,
       });
     } catch (error) {
@@ -40,9 +40,9 @@ export default class Home extends Component {
   render() {
 
     return (
-      <Layout changeLanguage={this.props.changeLanguage}>
+      <Layout changeLanguage={this.props.changeLanguage} changeSearch={this.props.changeSearch}>
         <div className="home-container">
-          <h1 className="heading">{this.props.q} related news</h1>
+          <h1 className="heading">{this.props.q} news articles</h1>
           <div className="content-articles">
             {this.state.articles.map((article, index) => {
               return (

@@ -17,6 +17,7 @@ header.header {
     max-width: 1640px;
     align-items: center;
     background: #fff;
+    position: relative;
 }
 .logo img{
     width: 100%;

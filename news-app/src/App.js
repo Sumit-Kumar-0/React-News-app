@@ -9,11 +9,17 @@ class App extends Component {
     super();
     this.state = {
       language: "en",
+      search: "",
     };
   }
   changeLanguage = (lang) => {
     this.setState({
       language: lang,
+    });
+  };
+  changeSearch = (searchText) => {
+    this.setState({
+      search: searchText,
     });
   };
   render() {
@@ -26,8 +32,9 @@ class App extends Component {
             element={
               <Home
                 changeLanguage={this.changeLanguage}
+                changeSearch={this.changeSearch}
                 language={language}
-                q="All"
+                q={this.state.search ? this.state.search : "All"}
               />
             }
           />
@@ -36,8 +43,9 @@ class App extends Component {
             element={
               <Home
                 changeLanguage={this.changeLanguage}
+                changeSearch={this.changeSearch}
                 language={language}
-                q="All"
+                q={this.state.search ? this.state.search : "All"}
               />
             }
           />
@@ -46,8 +54,9 @@ class App extends Component {
             element={
               <Home
                 changeLanguage={this.changeLanguage}
+                changeSearch={this.changeSearch}
                 language={language}
-                q="Politics"
+                q={this.state.search ? this.state.search : "Politics"}
               />
             }
           />
@@ -56,8 +65,9 @@ class App extends Component {
             element={
               <Home
                 changeLanguage={this.changeLanguage}
+                changeSearch={this.changeSearch}
                 language={language}
-                q="Science"
+                q={this.state.search ? this.state.search : "Science"}
               />
             }
           />
@@ -66,8 +76,9 @@ class App extends Component {
             element={
               <Home
                 changeLanguage={this.changeLanguage}
+                changeSearch={this.changeSearch}
                 language={language}
-                q="Technology"
+                q={this.state.search ? this.state.search : "Technology"}
               />
             }
           />
@@ -76,8 +87,9 @@ class App extends Component {
             element={
               <Home
                 changeLanguage={this.changeLanguage}
+                changeSearch={this.changeSearch}
                 language={language}
-                q="Education"
+                q={this.state.search ? this.state.search : "Education"}
               />
             }
           />
@@ -86,8 +98,9 @@ class App extends Component {
             element={
               <Home
                 changeLanguage={this.changeLanguage}
+                changeSearch={this.changeSearch}
                 language={language}
-                q="Crime"
+                q={this.state.search ? this.state.search : "Crime"}
               />
             }
           />
@@ -96,8 +109,9 @@ class App extends Component {
             element={
               <Home
                 changeLanguage={this.changeLanguage}
+                changeSearch={this.changeSearch}
                 language={language}
-                q="Entertainment"
+                q={this.state.search ? this.state.search : "Entertainment"}
               />
             }
           />
@@ -106,8 +120,9 @@ class App extends Component {
             element={
               <Home
                 changeLanguage={this.changeLanguage}
+                changeSearch={this.changeSearch}
                 language={language}
-                q="Sports"
+                q={this.state.search ? this.state.search : "Sports"}
               />
             }
           />
@@ -116,8 +131,9 @@ class App extends Component {
             element={
               <Home
                 changeLanguage={this.changeLanguage}
+                changeSearch={this.changeSearch}
                 language={language}
-                q="Cricket"
+                q={this.state.search ? this.state.search : "Cricket"}
               />
             }
           />
@@ -126,8 +142,9 @@ class App extends Component {
             element={
               <Home
                 changeLanguage={this.changeLanguage}
+                changeSearch={this.changeSearch}
                 language={language}
-                q="World"
+                q={this.state.search ? this.state.search : "World"}
               />
             }
           />
@@ -136,8 +153,9 @@ class App extends Component {
             element={
               <Home
                 changeLanguage={this.changeLanguage}
+                changeSearch={this.changeSearch}
                 language={language}
-                q="Covid-19"
+                q={this.state.search ? this.state.search : "Covid-19"}
               />
             }
           />
@@ -146,8 +164,9 @@ class App extends Component {
             element={
               <Home
                 changeLanguage={this.changeLanguage}
+                changeSearch={this.changeSearch}
                 language={language}
-                q="Jokes"
+                q={this.state.search ? this.state.search : "Jokes"}
               />
             }
           />

@@ -10,7 +10,7 @@ export default class NotFound extends Component {
         <div className="not-found-page">
           <h1>404</h1>
           <h2>Page Not Found</h2>
-          <Link>
+          <Link to="/">
             <Button text="go to home" className="primary-btn" />
           </Link>
         </div>

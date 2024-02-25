@@ -8,12 +8,12 @@ button.button {
     cursor: pointer;
 }
 button.primary-btn {
-    background: #547489;
-    border: 2px solid #547489;
+    background: #000;
+    border: 2px solid #000;
     color: #fff;
 }
 button.primary-btn:hover {
     background: #fff;
-    border: 2px solid #547489;
-    color: #547489;
+    border: 2px solid #000;
+    color: #000;
 }

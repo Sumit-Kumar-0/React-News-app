@@ -10,7 +10,7 @@ export default class Layout extends Component {
     
     return (
       <>
-        <Header changeLanguage={this.props.changeLanguage}/>
+        <Header changeLanguage={this.props.changeLanguage} changeSearch={this.props.changeSearch}/>
         <Main>{children}</Main>
         <Footer />
       </>
