@@ -14,7 +14,7 @@ export default class Home extends Component {
   getData = async () => {
     try {
       const response = await fetch(
-        `https://newsapi.org/v2/everything?q=${this.props.q}&language=${this.props.language}&sortBy=publishedAt&apiKey=02669b364bf94da48b8cae5410fcd620`
+        `https://newsapi.org/v2/everything?q=${this.props.q}&language=${this.props.language}&sortBy=publishedAt&apiKey=eff60c9a258248f4801d0954f393b1e9`
       );
       if (!response.ok) {
         console.log("error while fetching articles!!!");
