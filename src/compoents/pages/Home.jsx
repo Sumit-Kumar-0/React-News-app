@@ -3,7 +3,7 @@ import Layout from "../layout/Layout";
 import Button from "../shared/buttons/Button";
 import { Link } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Spinner from '../shared/spinner/Spinner';
+import Spinner from "../shared/spinner/Spinner";
 
 export default class Home extends Component {
   constructor() {
@@ -14,34 +14,10 @@ export default class Home extends Component {
       page: 1,
     };
   }
-  getData = async () => {
+  getData = async (page) => {
     try {
       const response = await fetch(
-        `https://newsapi.org/v2/everything?q=${this.props.q}&page=${this.state.page}&language=${this.props.language}&pageSize=12&sortBy=publishedAt&apiKey=eff60c9a258248f4801d0954f393b1e9`
-      );
-      if (!response.ok) {
-        console.log("error while fetching articles!!!");
-        return;
-      }
-      const result = await response.json();
-      this.setState({
-        articles: result.articles.filter(
-          (fitered) =>
-            fitered.title !== "[Removed]" &&
-            fitered.source.name.length < 20 &&
-            fitered.description.length > 150
-        ),
-        totalResults: result.totalResults,
-      });
-    } catch (error) {
-      console.log("error while fetching articles", error);
-    }
-  };
-  fetchData = async () => {
-    this.setState({ page: this.state.page + 1 });
-    try {
-      const response = await fetch(
-        `https://newsapi.org/v2/everything?q=${this.props.q}&page=${this.state.page}&language=${this.props.language}&pageSize=12&sortBy=publishedAt&apiKey=eff60c9a258248f4801d0954f393b1e9`
+        `https://newsapi.org/v2/everything?q=${this.props.q}&page=${page}&language=${this.props.language}&pageSize=12&sortBy=publishedAt&apiKey=eff60c9a258248f4801d0954f393b1e9`
       );
       if (!response.ok) {
         console.log("error while fetching articles!!!");
@@ -49,28 +25,46 @@ export default class Home extends Component {
       }
       const result = await response.json();
       if (result.articles) {
-        this.setState({
-          articles: this.state.articles.concat(
-            result.articles.filter(
+        if (page === 1) {
+          this.setState({
+            articles: result.articles.filter(
               (fitered) =>
                 fitered.title !== "[Removed]" &&
                 fitered.source.name.length < 20 &&
                 fitered.description.length > 150
-            )
-          ),
-          totalResults: result.totalResults,
-        });
+            ),
+            totalResults: result.totalResults,
+          });
+        } else {
+          this.setState({
+            articles: this.state.articles.concat(
+              result.articles.filter(
+                (fitered) =>
+                  fitered.title !== "[Removed]" &&
+                  fitered.source.name.length < 20 &&
+                  fitered.description.length > 150
+              )
+            ),
+            totalResults: result.totalResults,
+          });
+        }
       }
     } catch (error) {
       console.log("error while fetching articles", error);
     }
   };
+
+  fetchData = async () => {
+    this.getData(this.state.page + 1);
+    this.setState({ page: this.state.page + 1 });
+  };
+
   componentDidMount() {
-    this.getData();
+    this.getData(1);
   }
   componentDidUpdate(oldProps) {
     if (oldProps !== this.props) {
-      this.getData();
+      this.getData(1);
     }
   }
   render() {
@@ -86,10 +80,10 @@ export default class Home extends Component {
             dataLength={this.state.articles.length}
             next={this.fetchData}
             hasMore={this.state.articles.length < this.state.totalResults}
-            loader={<Spinner/>}
+            loader={<Spinner />}
             endMessage={
               <p style={{ textAlign: "center" }}>
-                <b>No more data available!!</b>
+                <b style={{ fontSize: "28px" }}>No more data available!!</b>
               </p>
             }
           >
